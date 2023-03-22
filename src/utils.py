@@ -1,7 +1,18 @@
-import os 
+import os
 import sys
-from  src.exception import CustomException
-from src.logger import logging
+from src.exception import CustomException
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from dataclasses import dataclass
+import numpy as np
+import dill
+
+
+def save_object(file_path, obj):
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+
+        with open(file_path, 'wb') as file_obj:
+            dill.dump(pbj, file_obj)
+
+    except Exception as e:
+        raise CustomException
